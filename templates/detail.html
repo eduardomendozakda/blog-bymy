@@ -1,0 +1,28 @@
+{% extends 'components/base.html' %}
+
+{% block navbar %}
+{% include 'components/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1 style="margin: 1rem;" class="text-center">Your wallpapers in one place</h1>
+    <hr>
+    <div class="card text-bg-dark">
+        <img src="/media/{{object.thumbnail}}" class="img-fluid" alt="...">
+            <div class="m-5">
+                <h5 class="card-title">Title: {{object.title}}</h5>
+                <p class="card-text">Description: {{object.description}}</p>
+                <p class="card-text"><small>Date: {{object.date_added | date}} {{object.date_added | time}}</small></p>
+                <p class="card-text">Created by: {{object.author}}</p>
+                {% if request.user == object.author %}
+                    <a href="{% url 'delete' object.id %}" class="btn btn-success">Update</a>
+                    <a href="{% url 'delete' object.id %}" class="btn btn-danger">Delete</a>
+                {% endif %}
+            </div>
+    </div>
+
+</div>
+
+{% endblock %}

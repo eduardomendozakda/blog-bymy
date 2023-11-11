@@ -1,0 +1,25 @@
+{% extends 'components/base.html' %}
+
+{% block navbar %}
+{% include 'components/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container">
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="container">
+      <h2 class="text-center mt-4">Delete Wallpaper</h2>  
+      <div class="text-center">
+          <p>Are you sure?</p>
+          <button type="submit" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
